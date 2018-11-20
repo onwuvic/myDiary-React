@@ -7,7 +7,10 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(createLogger(), thunk)));
+import App from './App';
+import reducers from './reducers';
+
+const store = createStore(reducers, composeWithDevTools(applyMiddleware(createLogger(), thunk)));
 
 const Index = () => (
     <BrowserRouter>
