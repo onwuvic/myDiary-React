@@ -5,7 +5,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader', 'source-map-loader']
       },
@@ -29,6 +29,9 @@ module.exports = {
     historyApiFallback: true,
     contentBase: './',
     hot: true
+  },
+  resolve: {
+    extensions: ['.js', 'jsx', '.json']
   },
   entry: [
     path.resolve(__dirname, 'src', 'index.js')
