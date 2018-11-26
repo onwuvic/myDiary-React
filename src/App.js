@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
+import './styles/style.css';
+import Login from './components/containers/Login/Login';
+import SignUp from './components/containers/SignUp/SignUp';
+
+const NoFound = () => <h1>No Found</h1>;
 /**
  * @class App
  * @extends {Component}
@@ -12,7 +18,13 @@ class App extends Component {
    */
   render() {
     return (
-        <div>Hi there</div>
+      <div>
+        <Switch>
+          <Route path='/' exact component={Login} />
+          <Route path='/signup' exact component={SignUp} />
+          <Route component={NoFound} />
+        </Switch>
+      </div>
     );
   }
 }
