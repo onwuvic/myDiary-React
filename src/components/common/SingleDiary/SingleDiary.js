@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const SingleArticle = () => (
+const SingleDiary = () => (
   <article>
     <h1 className="text-center">I Went Blank</h1>
     <div className="card-single" id="more-content">
@@ -24,4 +24,4 @@ const SingleArticle = () => (
   </article>
 );
 
-export { SingleArticle };
+export { SingleDiary };

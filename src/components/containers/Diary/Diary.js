@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
 
-import { Section, SingleArticle } from '../../common';
+import { SingleDiary } from '../../common';
+import Section from '../../common/Section/Section';
 
 /**
- * @class Article
+ * @class Diary
  * @extends {Component}
  */
-class Article extends Component {
+class Diary extends Component {
   /**
    * @description - This method renders the jsx for this component
    * @returns {jsx} - jsx
-   * @memberof Article
+   * @memberof Diary
    */
   render() {
     return (
       <Section styles="container-sm single-page">
-        <SingleArticle />
+        <SingleDiary />
       </Section>
     );
   }
 }
 
-export default Article;
+export default Diary;

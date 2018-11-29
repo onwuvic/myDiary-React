@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 
-import { Section, DiaryForm } from '../../common';
+import { DiaryForm } from '../../common';
+import Section from '../../common/Section/Section';
 
 /**
- * @class CreateArticle
+ * @class CreateDiary
  * @extends {Component}
  */
-class CreateArticle extends Component {
+class CreateDiary extends Component {
   /**
    * @description - This method renders the jsx for this component
    * @returns {jsx} - jsx
-   * @memberof CreateArticle
+   * @memberof CreateDiary
    */
   render() {
     return (
@@ -21,4 +22,4 @@ class CreateArticle extends Component {
   }
 }
 
-export default CreateArticle;
+export default CreateDiary;

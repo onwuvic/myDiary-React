@@ -1,15 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-const Section = ({ styles, children }) => (
-  <section id="main" className={styles}>
+const Section = ({ styles, children, event }) => (
+  <section style={{ marginLeft: event.active ? '250px' : '' }} className={styles}>
     {children}
   </section>
 );
 
 Section.propTypes = {
   children: PropTypes.node,
-  styles: PropTypes.string
+  styles: PropTypes.string,
+  event: PropTypes.object
 };
 
-export { Section };
+const mapStateToProps = state => ({
+  event: state.event
+});
+
+export default connect(mapStateToProps)(Section);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Section } from '../../common';
+import Section from '../../common/Section/Section';
 
 /**
  * @class Profile
