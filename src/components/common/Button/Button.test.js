@@ -25,16 +25,8 @@ it('should have a div', () => {
   expect(component.find('button').length).toEqual(1);
 });
 
-it('should have a props of id that is an string', () => {
-  expect(typeof component.props().id).toBe('string');
-});
-
 it('should have a props of type that is an string', () => {
   expect(typeof component.props().type).toBe('string');
-});
-
-it('should have a props of onClick that is a function', () => {
-  expect(typeof component.props().onClick).toBe('function');
 });
 
 it('should have a props of children that is a string', () => {

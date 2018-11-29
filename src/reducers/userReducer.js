@@ -16,9 +16,29 @@ const userReducer = (state = initialState, action) => {
       return { ...state, loading: action.payload };
     case asyncActionName(SIGN_UP).success:
       return {
-        ...state, user: action.payload.data, success: true, error: false, errorMessage: null
+        ...state,
+        user: action.payload,
+        success: true,
+        isAuth: true,
+        error: false,
+        errorMessage: null
       };
     case asyncActionName(SIGN_UP).failure:
+      return {
+        ...state, error: action.payload.status, errorMessage: action.payload.error
+      };
+    case asyncActionName(LOG_IN).loading:
+      return { ...state, loading: action.payload };
+    case asyncActionName(LOG_IN).success:
+      return {
+        ...state,
+        user: action.payload,
+        success: true,
+        isAuth: true,
+        error: false,
+        errorMessage: null
+      };
+    case asyncActionName(LOG_IN).failure:
       return {
         ...state, error: action.payload.status, errorMessage: action.payload.error
       };

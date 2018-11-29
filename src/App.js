@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import './styles/style.css';
 import Login from './components/containers/Login/Login';
 import SignUp from './components/containers/SignUp/SignUp';
+import Dashboard from './components/containers/Dashboard/Dashboard';
 
 const NoFound = () => <h1>No Found</h1>;
 /**
@@ -14,7 +15,7 @@ class App extends Component {
   /**
    * @description - This method renders the jsx for this component
    * @returns {jsx} - jsx
-   * @memberof CreateArticle
+   * @memberof App
    */
   render() {
     return (
@@ -22,6 +23,7 @@ class App extends Component {
         <Switch>
           <Route path='/' exact component={Login} />
           <Route path='/signup' exact component={SignUp} />
+          <Route path='/dashboard' component={Dashboard} />
           <Route component={NoFound} />
         </Switch>
       </div>

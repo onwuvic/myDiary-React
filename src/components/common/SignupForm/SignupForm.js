@@ -1,25 +1,25 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import { Input, Button } from '../index';
 
 const SignupForm = ({
-  states, handleChange, handleSubmit, loading
+  states, handleChange, loading
 }) => {
   const renderButton = () => {
     if (loading) {
-      return 'Loading...';
+      return (<p className="text-center">Loading...</p>);
     }
 
     return (
-      <Button type="submit" id="button" styles="btn btn-info" onClick={handleSubmit}>
+      <Button type="submit" styles="btn btn-info">
         Sign Up
       </Button>
     );
   };
 
   return (
-    <div>
+    <Fragment>
       <Input
         label="First Name"
         placeholder="First Name"
@@ -61,13 +61,12 @@ const SignupForm = ({
         required
       />
       {renderButton()}
-    </div>
+    </Fragment>
   );
 };
 
 SignupForm.propTypes = {
   handleChange: PropTypes.func,
-  handleSubmit: PropTypes.func,
   loading: PropTypes.bool,
   states: PropTypes.object,
 };
