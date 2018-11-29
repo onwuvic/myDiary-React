@@ -24,7 +24,15 @@ class Home extends Component {
    * @memberof Home
    */
   renderDiaryList() {
-    return this.props.diary.diaries.map(diary => <DiaryCard key={diary.id} diary={diary} />);
+    if (this.props.diary.diaries.length) {
+      return this.props.diary.diaries.map(diary => <DiaryCard key={diary.id} diary={diary} />);
+    }
+    return (
+    <div>
+        <h3 className="text-center">You have no diary entry</h3>
+        <h4 className="text-center">Get started by creating one!!!</h4>
+      </div>
+    );
   }
 
   /**
