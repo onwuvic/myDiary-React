@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { createBrowserHistory } from 'history';
 import React, { Component, Fragment } from 'react';
+
+import { logOut } from '../../../actions/authAction';
 import { displaySideNav } from '../../../actions/eventListenerAction';
+
+const history = createBrowserHistory({ forceRefresh: true });
 
 /**
  * @class Header
@@ -16,6 +21,7 @@ class Header extends Component {
     super();
 
     this.openSideNav = this.openSideNav.bind(this);
+    this.signOut = this.signOut.bind(this);
   }
 
   /**
@@ -24,6 +30,17 @@ class Header extends Component {
    */
   openSideNav() {
     this.props.displaySideNav();
+  }
+
+  /**
+   * @description - This method logs the user out of the application
+   * @returns {object} null
+   * @memberof Header
+   */
+  signOut() {
+    this.props.logOut();
+    localStorage.removeItem('token');
+    history.push('/');
   }
 
   /**
@@ -47,7 +64,7 @@ class Header extends Component {
           <a href="#/diary" className="h2">MyDiary</a>
         </div>
         <nav className="navbar-grid-equal">
-          <span id="logout" className="pointer">
+          <span id="logout" className="pointer" onClick={this.signOut}>
             <i className="fa fa-sign-out-alt fa-lg"></i> Logout
           </span>
         </nav>
@@ -58,11 +75,11 @@ class Header extends Component {
 
 Header.propTypes = {
   displaySideNav: PropTypes.func,
-  active: PropTypes.bool
+  logOut: PropTypes.func
 };
 
 const mapStateToProps = state => ({
   event: state.event
 });
 
-export default connect(mapStateToProps, { displaySideNav })(Header);
+export default connect(mapStateToProps, { displaySideNav, logOut })(Header);
