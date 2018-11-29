@@ -1,4 +1,7 @@
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import React, { Component } from 'react';
+import { hideSideNav } from '../../../actions/eventListenerAction';
 
 /**
  * @class SideBar
@@ -6,16 +9,36 @@ import React, { Component } from 'react';
  */
 class SideBar extends Component {
   /**
+   * @returns {func} - Constructor
+   * @memberof Header
+   */
+  constructor() {
+    super();
+
+    this.closeSideNav = this.closeSideNav.bind(this);
+  }
+
+  /**
+   * @returns {func} - Show Side Nav
+   * @memberof Header
+   */
+  closeSideNav() {
+    this.props.hideSideNav();
+  }
+
+  /**
    * @description - This method renders the jsx for this component
    * @returns {jsx} - jsx
    * @memberof SideBar
    */
   render() {
+    const { active } = this.props.event;
+
     return (
-      <nav className="side-navbar" id="side-menu">
+      <nav style={{ width: active ? '250px' : '' }} className="side-navbar" id="side-menu">
         <div className="navbar-brand navbar-grid-menu">
           <h2>MyDiary</h2>
-          <span className="btn-close pointer" id="close-menu">
+          <span className="btn-close pointer" id="close-menu" onClick={this.closeSideNav} >
             &times;
           </span>
         </div>
@@ -48,4 +71,13 @@ class SideBar extends Component {
   }
 }
 
-export default SideBar;
+SideBar.propTypes = {
+  event: PropTypes.object,
+  hideSideNav: PropTypes.func
+};
+
+const mapStateToProps = state => ({
+  event: state.event
+});
+
+export default connect(mapStateToProps, { hideSideNav })(SideBar);
