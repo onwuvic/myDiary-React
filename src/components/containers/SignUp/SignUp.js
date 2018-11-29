@@ -52,6 +52,7 @@ class SignUp extends Component {
     this.props.signUpUser(this.state)
       .then((res) => {
         this.setState({ ...this.initialState });
+        this.props.history.push('/dashboard');
       });
   }
 
@@ -70,12 +71,12 @@ class SignUp extends Component {
           urlLink="/"
           callToAction="Login"
           message={this.props.user}
+          onSubmit={this.handleSubmit}
           >
           <SignupForm
             states={this.state}
             loading={this.props.user.loading}
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}/>
+            handleChange={this.handleChange}/>
         </FormSection>
         <Footer />
       </div>
@@ -84,6 +85,7 @@ class SignUp extends Component {
 }
 
 SignUp.propTypes = {
+  history: PropTypes.object,
   signUpUser: PropTypes.func,
   user: PropTypes.object
 };

@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import { ShowMessage } from '../index';
 
 const FormSection = ({
-  authType, id, children, optionText, callToAction, urlLink, message
+  authType, children, optionText, callToAction, urlLink, message, onSubmit
 }) => (
   <section className="form form-sm">
     <h3 className="font-weight-normal text-center">{authType}</h3>
     <ShowMessage message={message} />
-    <form id={id}>
+    <form onSubmit={onSubmit}>
       {children}
     </form>
     <p className="text-center"> {optionText}  <Link to={urlLink} className="login-color">{callToAction}</Link></p>
@@ -21,7 +21,7 @@ FormSection.propTypes = {
   children: PropTypes.node,
   message: PropTypes.object,
   optionText: PropTypes.string,
-  id: PropTypes.string,
+  onSubmit: PropTypes.func,
   urlLink: PropTypes.string,
   callToAction: PropTypes.string
 };

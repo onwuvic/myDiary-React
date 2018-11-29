@@ -3,17 +3,15 @@ import PropTypes from 'prop-types';
 
 
 const Button = ({
-  type, children, styles, id, onClick
+  type, children, styles
 }) => (
-  <button type={type} id={id} className={styles} onClick={onClick}>{children}</button>
+  <button type={type} className={styles}>{children}</button>
 );
 
 Button.propTypes = {
   type: PropTypes.string,
   children: PropTypes.node,
-  styles: PropTypes.string,
-  id: PropTypes.string,
-  onClick: PropTypes.func
+  styles: PropTypes.string
 };
 
 export { Button };
