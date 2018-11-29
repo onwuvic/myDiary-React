@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 
 
@@ -8,7 +9,7 @@ const DiaryCard = ({ diary }) => (
       <div className="card-body">
         <h5 className="card-title">{diary.title}</h5>
         <div className="card-more">
-          <small className="card-date">Created {diary.created_at}</small>
+          <small className="card-date">Created {moment(diary.created_at).format('ll')}</small>
           <div className="view-more">
             <a href="#">View</a>
             <a href="#">Edit</a>

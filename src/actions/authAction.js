@@ -3,7 +3,7 @@ import axios from 'axios';
 import { user } from '../constants/routes';
 import setAuthToken from '../util/AuthToken';
 import { asyncActions } from '../util/AsyncUtil';
-import { LOG_IN, SIGN_UP } from '../actionTypes';
+import { LOG_IN, SIGN_UP, LOG_OUT } from '../actionTypes';
 
 export const signUpUser = userInput => (dispatch) => {
   dispatch(asyncActions(SIGN_UP).loading(true));
@@ -43,3 +43,7 @@ export const loginUser = userInput => (dispatch) => {
       throw error;
     });
 };
+
+export const logOut = () => (
+  { type: LOG_OUT, payload: { isAuth: false } }
+);
