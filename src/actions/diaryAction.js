@@ -2,7 +2,9 @@ import axios from 'axios';
 
 import { diary, diaryParams } from '../constants/routes';
 import { asyncActions } from '../util/AsyncUtil';
-import { GET_ALL_DIARIES, GET_ONE_DIARY, CREATE_DIARY } from '../actionTypes';
+import {
+  GET_ALL_DIARIES, GET_ONE_DIARY, CREATE_DIARY, UPDATE_DIARY
+} from '../actionTypes';
 
 export const getAllDiaries = () => (dispatch) => {
   dispatch(asyncActions(GET_ALL_DIARIES).loading(true));
@@ -44,6 +46,22 @@ export const createDiary = newDiary => (dispatch) => {
     .catch((error) => {
       dispatch(asyncActions(CREATE_DIARY).loading(false));
       dispatch(asyncActions(CREATE_DIARY).failure(true, error.response.data.message));
+      throw error;
+    });
+};
+
+export const updateDiary = (id, updatedDiary) => (dispatch) => {
+  dispatch(asyncActions(UPDATE_DIARY).loading(true));
+
+  return axios.put(diaryParams(id).ONE_DIARY_URL, updatedDiary)
+    .then((response) => {
+      dispatch(asyncActions(UPDATE_DIARY).loading(false));
+      dispatch(asyncActions(UPDATE_DIARY).success(response.data));
+      return response;
+    })
+    .catch((error) => {
+      dispatch(asyncActions(UPDATE_DIARY).loading(false));
+      dispatch(asyncActions(UPDATE_DIARY).failure(true, error.response.data.message));
       throw error;
     });
 };

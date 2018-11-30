@@ -8,6 +8,7 @@ import { Footer } from '../../common';
 import SideBar from '../SideBar/SideBar';
 import Profile from '../Profile/Profile';
 import Settings from '../Settings/Settings';
+import EditDiary from '../EditDiary/EditDiary';
 import CreateDiary from '../CreateDiary/CreateDiary';
 import Notification from '../Notification/Notification';
 
@@ -33,9 +34,10 @@ class Dashboard extends Component {
         <Switch>
           <Route path='/dashboard' exact component={Home} />
           <Route path='/dashboard/profile' component={Profile} />
-          <Route path='/dashboard/diaries/:id' component={Diary} />
+          <Route path='/dashboard/diaries/:id' exact component={Diary} />
           <Route path='/dashboard/settings' component={Settings} />
           <Route path='/dashboard/new-diary' component={CreateDiary} />
+          <Route path='/dashboard/diaries/:id/edit' component={EditDiary} />
           <Route path='/dashboard/notifications' component={Notification} />
         </Switch>
         <Footer />

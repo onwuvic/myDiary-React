@@ -23,7 +23,7 @@ const DiaryForm = ({
       <ShowMessage message={message} />
       <div className="form-group">
         <label htmlFor="title">Title</label>
-        <input type="text" id="title" placeholder="Title" value={state.titlt} onChange={handleChange} />
+        <input type="text" id="title" placeholder="Title" value={state.title} onChange={handleChange} />
       </div>
       <div className="form-group">
         <label htmlFor="body">Dear Diary</label>
