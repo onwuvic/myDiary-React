@@ -8,4 +8,3 @@ export * from './LoginForm/LoginForm';
 export * from './SignupForm/SignupForm';
 export * from './FormSection/FormSection';
 export * from './ShowMessage/ShowMessage';
-export * from './SingleDiary/SingleDiary';

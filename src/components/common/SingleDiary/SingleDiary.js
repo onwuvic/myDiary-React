@@ -1,27 +1,39 @@
 import React from 'react';
+import moment from 'moment';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 
-const SingleDiary = () => (
-  <article>
-    <h1 className="text-center">I Went Blank</h1>
-    <div className="card-single" id="more-content">
-      <small className="card-date">Created 5 July 201</small>
-      <div className="view-single">
-        <a href="#">Edit</a>
-        <a href="#">Delete</a>
+const SingleDiary = ({ diary }) => {
+  if (diary.error) {
+    return (
+      <div>
+        <h3 className="text-center">{diary.errorMessage}</h3>
       </div>
-      <i className="fa fa-ellipsis-v" id="more-information"></i>
-    </div>
-    <p className="paragraph">
-      Few days to this my famous speech. Having prepared such much not
-      because I wanted to impressed the whole school or because I want to inspire the student.
-      I did it because I wanted to impress her. We met when
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Molestias modi nemo itaque perferendis sapiente
-      atque ad officiis, incidunt cupiditate veritatis beatae voluptas rerum vero. Molestias, non?
-      Odio eligendi dolor facere.
-    </p>
-  </article>
-);
+    );
+  }
+  return (
+    <article>
+      <h1 className="text-center">{diary.diary.title}</h1>
+      <div className="card-single" id="more-content">
+        <small className="card-date">Created {moment(diary.diary.created_at).format('ll')}</small>
+        <div className="view-single">
+          <a href="#">Edit</a>
+          <a href="#">Delete</a>
+        </div>
+        <i className="fa fa-ellipsis-v" id="more-information"></i>
+      </div>
+      <p className="paragraph">{diary.diary.body}</p>
+    </article>
+  );
+};
 
-export { SingleDiary };
+SingleDiary.propTypes = {
+  diary: PropTypes.object
+};
+
+const mapStateToProps = state => ({
+  diary: state.diary
+});
+
+export default connect(mapStateToProps)(SingleDiary);
