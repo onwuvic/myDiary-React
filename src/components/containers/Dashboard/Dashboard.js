@@ -33,7 +33,7 @@ class Dashboard extends Component {
         <Switch>
           <Route path='/dashboard' exact component={Home} />
           <Route path='/dashboard/profile' component={Profile} />
-          <Route path='/dashboard/diaries' component={Diary} />
+          <Route path='/dashboard/diaries/:id' component={Diary} />
           <Route path='/dashboard/settings' component={Settings} />
           <Route path='/dashboard/new-diary' component={CreateDiary} />
           <Route path='/dashboard/notifications' component={Notification} />

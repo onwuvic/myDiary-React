@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-import { diary } from '../constants/routes';
+import { diary, diaryParams } from '../constants/routes';
 import { asyncActions } from '../util/AsyncUtil';
-import { GET_ALL_DIARIES } from '../actionTypes';
+import { GET_ALL_DIARIES, GET_ONE_DIARY } from '../actionTypes';
 
 export const getAllDiaries = () => (dispatch) => {
   dispatch(asyncActions(GET_ALL_DIARIES).loading(true));
@@ -18,6 +18,16 @@ export const getAllDiaries = () => (dispatch) => {
     });
 };
 
-export const loginUser = userInput => (dispatch) => {
+export const getOneDiaries = id => (dispatch) => {
+  dispatch(asyncActions(GET_ONE_DIARY).loading(true));
 
+  axios.get(diaryParams(id).ONE_DIARY_URL)
+    .then((response) => {
+      dispatch(asyncActions(GET_ONE_DIARY).loading(false));
+      dispatch(asyncActions(GET_ONE_DIARY).success(response.data));
+    })
+    .catch((error) => {
+      dispatch(asyncActions(GET_ONE_DIARY).loading(false));
+      dispatch(asyncActions(GET_ONE_DIARY).failure(true, error.response.data.message));
+    });
 };

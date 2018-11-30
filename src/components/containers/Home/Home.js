@@ -28,7 +28,7 @@ class Home extends Component {
       return this.props.diary.diaries.map(diary => <DiaryCard key={diary.id} diary={diary} />);
     }
     return (
-    <div>
+      <div>
         <h3 className="text-center">You have no diary entry</h3>
         <h4 className="text-center">Get started by creating one!!!</h4>
       </div>

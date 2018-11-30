@@ -8,3 +8,7 @@ export const user = {
 export const diary = {
   ALL_DIARIES_URL: `${BASE_URL}/entries`
 };
+
+export const diaryParams = id => ({
+  ONE_DIARY_URL: `${BASE_URL}/entries/${id}`
+});
