@@ -3,7 +3,7 @@ import axios from 'axios';
 import { diary, diaryParams } from '../constants/routes';
 import { asyncActions } from '../util/AsyncUtil';
 import {
-  GET_ALL_DIARIES, GET_ONE_DIARY, CREATE_DIARY, UPDATE_DIARY
+  GET_ALL_DIARIES, GET_ONE_DIARY, CREATE_DIARY, UPDATE_DIARY, DELETE_DIARY
 } from '../actionTypes';
 
 export const getAllDiaries = () => (dispatch) => {
@@ -63,5 +63,19 @@ export const updateDiary = (id, updatedDiary) => (dispatch) => {
       dispatch(asyncActions(UPDATE_DIARY).loading(false));
       dispatch(asyncActions(UPDATE_DIARY).failure(true, error.response.data.message));
       throw error;
+    });
+};
+
+export const deleteDiary = id => (dispatch) => {
+  dispatch(asyncActions(DELETE_DIARY).loading(true));
+
+  axios.delete(diaryParams(id).ONE_DIARY_URL)
+    .then((response) => {
+      dispatch(asyncActions(DELETE_DIARY).loading(false));
+      dispatch(asyncActions(DELETE_DIARY).success(response.data));
+    })
+    .catch((error) => {
+      dispatch(asyncActions(DELETE_DIARY).loading(false));
+      dispatch(asyncActions(DELETE_DIARY).failure(true, error.response.data.message));
     });
 };

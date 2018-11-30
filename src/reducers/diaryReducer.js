@@ -1,6 +1,6 @@
 import { asyncActionName } from '../util/AsyncUtil';
 import {
-  GET_ALL_DIARIES, GET_ONE_DIARY, CREATE_DIARY, UPDATE_DIARY
+  GET_ALL_DIARIES, GET_ONE_DIARY, CREATE_DIARY, UPDATE_DIARY, DELETE_DIARY
 } from '../actionTypes';
 
 const initialState = {
@@ -53,6 +53,19 @@ const diaryReducer = (state = initialState, action) => {
         errorMessage: null
       };
     case asyncActionName(UPDATE_DIARY).failure:
+      return {
+        ...state, error: action.payload.status, errorMessage: action.payload.error
+      };
+    case asyncActionName(DELETE_DIARY).loading:
+      return { ...state, loading: action.payload };
+    case asyncActionName(DELETE_DIARY).success:
+      return {
+        ...state,
+        message: action.payload.message,
+        error: false,
+        errorMessage: null
+      };
+    case asyncActionName(DELETE_DIARY).failure:
       return {
         ...state, error: action.payload.status, errorMessage: action.payload.error
       };
