@@ -15,10 +15,6 @@ afterEach(() => {
   component.unmount();
 });
 
-it('should render without throwing an error', () => {
-  expect(component).toMatchSnapshot();
-});
-
 it('should have a button', () => {
   expect(component.find('button').length).toEqual(1);
 });
