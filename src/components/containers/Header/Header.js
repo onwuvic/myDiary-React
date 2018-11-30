@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import React, { Component, Fragment } from 'react';
 
@@ -61,7 +62,7 @@ class Header extends Component {
           </span>
         </div>
         <div className="navbar-brand">
-          <a href="#/diary" className="h2">MyDiary</a>
+          <Link to="/dashboard" className="h2">MyDiary</Link>
         </div>
         <nav className="navbar-grid-equal">
           <span id="logout" className="pointer" onClick={this.signOut}>

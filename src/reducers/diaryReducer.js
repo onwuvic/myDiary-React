@@ -1,5 +1,5 @@
 import { asyncActionName } from '../util/AsyncUtil';
-import { GET_ALL_DIARIES, GET_ONE_DIARY } from '../actionTypes';
+import { GET_ALL_DIARIES, GET_ONE_DIARY, CREATE_DIARY } from '../actionTypes';
 
 const initialState = {
   error: false,
@@ -24,6 +24,19 @@ const diaryReducer = (state = initialState, action) => {
     case asyncActionName(GET_ONE_DIARY).success:
       return { ...state, diary: action.payload };
     case asyncActionName(GET_ONE_DIARY).failure:
+      return {
+        ...state, error: action.payload.status, errorMessage: action.payload.error
+      };
+    case asyncActionName(CREATE_DIARY).loading:
+      return { ...state, loading: action.payload };
+    case asyncActionName(CREATE_DIARY).success:
+      return {
+        ...state,
+        diary: action.payload,
+        error: false,
+        errorMessage: null
+      };
+    case asyncActionName(CREATE_DIARY).failure:
       return {
         ...state, error: action.payload.status, errorMessage: action.payload.error
       };

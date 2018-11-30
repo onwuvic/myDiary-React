@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import { hideSideNav } from '../../../actions/eventListenerAction';
 
@@ -43,29 +44,25 @@ class SideBar extends Component {
           </span>
         </div>
         <div className="divider"></div>
-        <a href="#/profile" className="profile-avatar">
+        <Link to="/dashboard/profile" className="profile-avatar">
           <img src="image/avatar.png" className="img-circle" alt="profile picture" />
           <span id="user-detail"><strong>Jane Doe</strong></span>
-        </a>
+        </Link>
         <div className="divider"></div>
-        <a href="#/new">
-          <i className="fa fa-plus fa-lg"></i>
-          Create New Diary
-        </a>
-        <a href="#/diary">
-          <i className="fa fa-atlas fa-lg"></i>
-          All Diaries
-        </a>
+        <Link to="/dashboard/new-diary">
+          <i className="fa fa-plus fa-lg"></i> Create New Diary
+        </Link>
+        <Link to="/dashboard">
+          <i className="fa fa-atlas fa-lg"></i> All Diaries
+        </Link>
         <div className="divider"></div>
-        <a href="#/notification">
+        <Link to="/dashboard/notifications">
           <i className="fa fa-bell fa-lg"></i>
-          <span className="notify-count notify-available">9</span>
-          Notifications
-        </a>
-        <a href="#/settings">
-          <i className="fa fa-cog fa-lg"></i>
-          Settings
-        </a>
+          <span className="notify-count notify-available">9</span> Notifications
+        </Link>
+        <Link to="/dashboard/settings">
+          <i className="fa fa-cog fa-lg"></i> Settings
+        </Link>
       </nav>
     );
   }
