@@ -6,7 +6,11 @@ node_js:
 env:
   global:
     - CC_TEST_REPORTER_ID=201198cd090d0ec0827c22cc557d10f8f10fc69ade0a6ccb544f17da2b246279
-  
+
+addons:
+  code_climate:
+    repo_token: $CC_TEST_REPORTER_ID
+
 cache:
   directories:
   - node_modules
@@ -15,8 +19,10 @@ install:
 script:
   - npm test
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+  # - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  # - chmod +x ./cc-test-reporter
+  # - ./cc-test-reporter before-build
+  - npm install codeclimate-test-reporter -g
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  # - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - codeclimate-test-reporter < ./coverage-jest/lcov.info
