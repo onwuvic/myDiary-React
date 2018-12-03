@@ -12,23 +12,28 @@ import setAuthToken from './util/AuthToken';
 import { asyncActions } from './util/AsyncUtil';
 import { LOG_IN } from './actionTypes';
 
-const store = createStore(reducers, composeWithDevTools(applyMiddleware(createLogger(), thunk)));
+const Root = ({ children, initialState = {} }) => {
+  const store = createStore(
+    reducers, initialState, composeWithDevTools(applyMiddleware(createLogger(), thunk))
+  );
 
-if (localStorage.token) {
-  // setting token to request headers for authentication
-  setAuthToken(localStorage.token);
-  // adding user object to User's store
-  store.dispatch(asyncActions(LOG_IN).success(jwtDecode(localStorage.token)));
-}
+  if (localStorage.token) {
+    // setting token to request headers for authentication
+    setAuthToken(localStorage.token);
+    // adding user object to User's store
+    store.dispatch(asyncActions(LOG_IN).success(jwtDecode(localStorage.token)));
+  }
 
-const Root = props => (
+  return (
     <Provider store={store}>
-      {props.children}
+      {children}
     </Provider>
-);
+  );
+};
 
 Root.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  initialState: PropTypes.object
 };
 
 export default Root;

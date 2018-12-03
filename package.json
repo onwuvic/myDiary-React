@@ -32,10 +32,12 @@
     "homepage": "https://github.com/onwuvic/myDiary-React#readme",
     "dependencies": {
         "axios": "^0.18.0",
+        "axios-mock-adapter": "^1.15.0",
         "babel-core": "^7.0.0-bridge.0",
         "babel-jest": "^23.6.0",
         "babel-preset-react": "^6.24.1",
         "express": "^4.16.4",
+        "file-loader": "^2.0.0",
         "history": "^4.7.2",
         "jwt-decode": "^2.2.0",
         "moment": "^2.22.2",

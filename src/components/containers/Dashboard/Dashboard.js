@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Home from '../Home/Home';
-import Diary from '../Diary/Diary';
-import Header from '../Header/Header';
+import HomePage from '../Home/Home';
+import DiaryPage from '../Diary/Diary';
+import HeaderHome from '../Header/Header';
 import { Footer } from '../../common';
-import SideBar from '../SideBar/SideBar';
+import SideBarPage from '../SideBar/SideBar';
 import Profile from '../Profile/Profile';
 import Settings from '../Settings/Settings';
-import EditDiary from '../EditDiary/EditDiary';
-import CreateDiary from '../CreateDiary/CreateDiary';
+import EditDiaryPage from '../EditDiary/EditDiary';
+import CreateDiaryHome from '../CreateDiary/CreateDiary';
 import Notification from '../Notification/Notification';
+
+const NoFound = () => <h1 style={{ marginTop: '50px' }} className="text-center">No Page Found</h1>;
 
 /**
  * @class Dashboard
@@ -27,18 +29,19 @@ class Dashboard extends Component {
       <div>
         <header>
           <div className="container container-fluid navbar-grid">
-            <Header />
-            <SideBar />
+            <HeaderHome />
+            <SideBarPage />
           </div>
         </header>
         <Switch>
-          <Route path='/dashboard' exact component={Home} />
+          <Route path='/dashboard' exact component={HomePage} />
           <Route path='/dashboard/profile' component={Profile} />
-          <Route path='/dashboard/diaries/:id' exact component={Diary} />
+          <Route path='/dashboard/diaries/:id' exact component={DiaryPage} />
           <Route path='/dashboard/settings' component={Settings} />
-          <Route path='/dashboard/new-diary' component={CreateDiary} />
-          <Route path='/dashboard/diaries/:id/edit' component={EditDiary} />
+          <Route path='/dashboard/new-diary' component={CreateDiaryHome} />
+          <Route path='/dashboard/diaries/:id/edit' component={EditDiaryPage} />
           <Route path='/dashboard/notifications' component={Notification} />
+          <Route component={NoFound} />
         </Switch>
         <Footer />
       </div>

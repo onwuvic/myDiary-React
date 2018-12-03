@@ -9,7 +9,7 @@ import {
 export const getAllDiaries = () => (dispatch) => {
   dispatch(asyncActions(GET_ALL_DIARIES).loading(true));
 
-  axios.get(diary.DIARIES_URL)
+  return axios.get(diary.DIARIES_URL)
     .then((response) => {
       dispatch(asyncActions(GET_ALL_DIARIES).loading(false));
       dispatch(asyncActions(GET_ALL_DIARIES).success(response.data));
@@ -23,7 +23,7 @@ export const getAllDiaries = () => (dispatch) => {
 export const getOneDiaries = id => (dispatch) => {
   dispatch(asyncActions(GET_ONE_DIARY).loading(true));
 
-  axios.get(diaryParams(id).ONE_DIARY_URL)
+  return axios.get(diaryParams(id).ONE_DIARY_URL)
     .then((response) => {
       dispatch(asyncActions(GET_ONE_DIARY).loading(false));
       dispatch(asyncActions(GET_ONE_DIARY).success(response.data));
@@ -45,7 +45,7 @@ export const createDiary = newDiary => (dispatch) => {
     })
     .catch((error) => {
       dispatch(asyncActions(CREATE_DIARY).loading(false));
-      dispatch(asyncActions(CREATE_DIARY).failure(true, error.response.data.message));
+      dispatch(asyncActions(CREATE_DIARY).failure(true, error.response.data));
       throw error;
     });
 };
@@ -69,7 +69,7 @@ export const updateDiary = (id, updatedDiary) => (dispatch) => {
 export const deleteDiary = id => (dispatch) => {
   dispatch(asyncActions(DELETE_DIARY).loading(true));
 
-  axios.delete(diaryParams(id).ONE_DIARY_URL)
+  return axios.delete(diaryParams(id).ONE_DIARY_URL)
     .then((response) => {
       dispatch(asyncActions(DELETE_DIARY).loading(false));
       dispatch(asyncActions(DELETE_DIARY).success(response.data));

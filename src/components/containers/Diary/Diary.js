@@ -10,7 +10,7 @@ import SingleDiary from '../../common/SingleDiary/SingleDiary';
  * @class Diary
  * @extends {Component}
  */
-class Diary extends Component {
+export class Diary extends Component {
   /**
    * @returns {func} diary
    * @memberof Home

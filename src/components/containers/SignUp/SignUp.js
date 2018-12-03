@@ -9,7 +9,7 @@ import { FormSection, Footer, SignupForm } from '../../common';
  * @class App
  * @extends {Component}
  */
-class SignUp extends Component {
+export class SignUp extends Component {
   /**
    * @description - This method runs first in the class
    * @returns {object} SignUp
