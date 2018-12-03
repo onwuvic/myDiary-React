@@ -10,7 +10,7 @@ import { updateDiary, getOneDiaries } from '../../../actions/diaryAction';
  * @class EditDiary
  * @extends {Component}
  */
-class EditDiary extends Component {
+export class EditDiary extends Component {
   /**
    * @description - This method runs first in the class
    * @returns {object} Login

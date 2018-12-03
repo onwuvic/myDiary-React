@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/onwuvic/myDiary-React.svg?branch=staging)](https://travis-ci.org/onwuvic/myDiary-React)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/91914565339f4bb58bc6/test_coverage)](https://codeclimate.com/github/onwuvic/myDiary-React/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/91914565339f4bb58bc6/maintainability)](https://codeclimate.com/github/onwuvic/myDiary-React/maintainability)
 
 # MyDiary
 

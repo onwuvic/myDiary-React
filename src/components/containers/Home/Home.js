@@ -10,7 +10,7 @@ import { getAllDiaries } from '../../../actions/diaryAction';
  * @class Home
  * @extends {Component}
  */
-class Home extends Component {
+export class Home extends Component {
   /**
    * @returns {func} diary
    * @memberof Home

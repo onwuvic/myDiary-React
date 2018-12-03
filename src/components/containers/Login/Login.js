@@ -9,7 +9,7 @@ import { FormSection, Footer, LoginForm } from '../../common';
  * @class Login
  * @extends {Component}
  */
-class Login extends Component {
+export class Login extends Component {
   /**
    * @description - This method runs first in the class
    * @returns {object} Login

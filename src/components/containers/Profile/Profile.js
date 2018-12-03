@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import React, { Component } from 'react';
 
 import Section from '../../common/Section/Section';
@@ -13,6 +15,7 @@ class Profile extends Component {
    * @memberof Profile
    */
   render() {
+    const { user } = this.props.user;
     return (
       <Section styles="container-sm single-page">
         <div>
@@ -20,17 +23,17 @@ class Profile extends Component {
           <div className="divider"></div>
           <div className="list">
             <p><strong>Total Number of User Diary</strong></p>
-            <p><strong className="entry-count">6</strong></p>
+            <p><strong className="entry-count">{this.props.diary.diaries.length}</strong></p>
           </div>
           <h4>User Profile</h4>
           <div className="divider"></div>
           <div className="list">
             <p>First Name</p>
-            <p>John</p>
+            <p>{user.firstname}</p>
           </div>
           <div className="list">
             <p>Last Name</p>
-            <p>Doe</p>
+            <p>{user.lastname}</p>
           </div>
           <div className="list">
             <p>Username</p>
@@ -38,7 +41,7 @@ class Profile extends Component {
           </div>
           <div className="list">
             <p>Email Address</p>
-            <p>johndoe@example.com</p>
+            <p>{user.email}</p>
           </div>
         </div>
       </Section>
@@ -46,4 +49,14 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+Profile.propTypes = {
+  diary: PropTypes.object,
+  user: PropTypes.object
+};
+
+const mapStateToProps = state => ({
+  diary: state.diary,
+  user: state.user
+});
+
+export default connect(mapStateToProps)(Profile);

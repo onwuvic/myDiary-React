@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import { hideSideNav } from '../../../actions/eventListenerAction';
+import avatar from '../../../assests/images/avatar.png';
 
 /**
  * @class SideBar
  * @extends {Component}
  */
-class SideBar extends Component {
+export class SideBar extends Component {
   /**
    * @returns {func} - Constructor
    * @memberof Header
@@ -45,8 +46,8 @@ class SideBar extends Component {
         </div>
         <div className="divider"></div>
         <Link to="/dashboard/profile" className="profile-avatar">
-          <img src="image/avatar.png" className="img-circle" alt="profile picture" />
-          <span id="user-detail"><strong>Jane Doe</strong></span>
+          <img src={avatar} className="img-circle" alt="profile picture" />
+          <span id="user-detail"><strong>{this.props.user.user.firstname} {this.props.user.user.lastname}</strong></span>
         </Link>
         <div className="divider"></div>
         <Link to="/dashboard/new-diary">
@@ -70,11 +71,13 @@ class SideBar extends Component {
 
 SideBar.propTypes = {
   event: PropTypes.object,
-  hideSideNav: PropTypes.func
+  hideSideNav: PropTypes.func,
+  user: PropTypes.object
 };
 
 const mapStateToProps = state => ({
-  event: state.event
+  event: state.event,
+  user: state.user
 });
 
 export default connect(mapStateToProps, { hideSideNav })(SideBar);

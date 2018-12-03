@@ -13,7 +13,7 @@ const history = createBrowserHistory({ forceRefresh: true });
  * @class Header
  * @extends {Component}
  */
-class Header extends Component {
+export class Header extends Component {
   /**
    * @returns {func} - Constructor
    * @memberof Header

@@ -1,5 +1,5 @@
 import { asyncActionName } from '../util/AsyncUtil';
-import { LOG_IN, SIGN_UP } from '../actionTypes';
+import { LOG_IN, SIGN_UP, LOG_OUT } from '../actionTypes';
 
 const initialState = {
   error: false,
@@ -41,6 +41,13 @@ const userReducer = (state = initialState, action) => {
     case asyncActionName(LOG_IN).failure:
       return {
         ...state, error: action.payload.status, errorMessage: action.payload.error
+      };
+    case LOG_OUT:
+      return {
+        ...state,
+        isAuth: false,
+        error: false,
+        errorMessage: null
       };
     default:
       return state;
